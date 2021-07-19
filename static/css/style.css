@@ -1,0 +1,73 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+main { 
+    display: grid;
+    height: 100vh;
+    place-items: center;
+    /* background full compatability*/
+    background: rgb(254,121,169);
+    background: -moz-linear-gradient(145deg, rgba(254,121,169,1) 0%, rgba(255,197,123,1) 100%);
+    background: -webkit-linear-gradient(145deg, rgba(254,121,169,1) 0%, rgba(255,197,123,1) 100%);
+    background: linear-gradient(145deg, rgba(254,121,169,1) 0%, rgba(255,197,123,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#fe79a9",endColorstr="#ffc57b",GradientType=1);
+}
+
+.login{
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50vw;
+    height: 75vh;
+    border-radius: 2rem;
+    font-size: 1.6rem;
+}
+
+.top {
+    text-align: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    color: #4896ff;
+}
+
+input {
+    margin: 2.5rem 0 0 0;
+    height: 4rem;
+    padding-left: 1rem;
+    font-size: 1.4rem;
+    font-style: italic;
+    border-radius: 1rem;
+    border: 1px solid rgb(214, 214, 214);
+    background: #f8f8f8;
+}
+
+#submit-button {
+    background: #4896ff;
+    color: white;
+    font-style: normal;
+}
+
+#checkbox {
+    width: 1rem;
+    background: #f8f8f8;
+    margin: 0 .5rem 0 0;
+}
+
+.form__checkbox {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    margin-top: .5rem;
+}
