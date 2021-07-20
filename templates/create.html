@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block body%}
+<main>
+    <div class="login">
+        <div class="top">
+            <h1>Create account</h1>
+            <p>Already have an account? <a href="#">Sign in</a></p>
+        </div>
+        <form class="form" action="/check" method="POST">
+            {{ form.hidden_tag() }}
+            {{ form.email(id='email', placeholder='Email')}}
+            <div class="form__name">
+                {{ form.firstname(id='firstname', placeholder='First Name') }}
+                {{ form.lastname(id='lastname', placeholder='Last Name')}}
+            </div>
+            {{ form.password(id='password', placeholder='Password') }}
+            {{ form.submit(id='submit-button') }}
+            <!--<div class="form__checkbox">
+                <input type="checkbox" name="checkbox" id="checkbox">
+                <label for="checkbox">I have read and agreed to the <a href="#">Terms of Service</a></label>
+            </div>-->
+        </form>
+    </div>
+</main>
+{% endblock %}
