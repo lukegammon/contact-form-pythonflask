@@ -16,10 +16,10 @@
             </div>
             {{ form.password(id='password', placeholder='Password') }}
             {{ form.submit(id='submit-button') }}
-            <!--<div class="form__checkbox">
-                <input type="checkbox" name="checkbox" id="checkbox">
+            <div class="form__checkbox">
+                {{ form.tcaccepted(id='checkbox')}}
                 <label for="checkbox">I have read and agreed to the <a href="#">Terms of Service</a></label>
-            </div>-->
+            </div>
         </form>
     </div>
 </main>

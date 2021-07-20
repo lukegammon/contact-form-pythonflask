@@ -6,5 +6,5 @@ class RegistrationForm(FlaskForm):
     firstname = StringField('firstname', [validators.Length(min=2, max=25), validators.DataRequired()] )
     lastname = StringField('lastname', [validators.Length(min=2, max=25), validators.DataRequired()])
     password = PasswordField('password', [validators.DataRequired()])
-    #tcaccepted = BooleanField('tcaccepted', [validators.DataRequired()])
+    tcaccepted = BooleanField('tcaccepted', [validators.DataRequired()])
     submit = SubmitField('Submit')

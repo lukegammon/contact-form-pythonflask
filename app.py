@@ -1,57 +1,24 @@
 from flask import Flask, render_template, request, redirect, jsonify
-from wtforms import Form, BooleanField, StringField, PasswordField, validators
+from forms import RegistrationForm
+from werkzeug.security import generate_password_hash, check_password_hash
 
 # App config
-DEBUG=True
 app = Flask(__name__)
-
-class RegistrationForm(Form):
-    email = StringField('Email Address', [validators.Length(min=6, max=35)])
-    firstname = StringField('Firstname ', [validators.Length(min=2, max=25)])
-    lastname = StringField('Lastname', [validators.Length(min=2, max=25)])
-    password = PasswordField('Password', [validators.DataRequired()])
-    tcaccepted = BooleanField('I accept the TOS', [validators.DataRequired()])
+app.config['SECRET_KEY'] = 'StronglySecretYa'
 
 @app.route("/")
 def main():
-    return render_template('login.html')
+    form = RegistrationForm()
+    return render_template('create.html', title="Create Account", form=form)
 
 @app.route("/check", methods=['GET','POST'])
 def signup():
-    form = RegistrationForm(request.form)
-    if request.method == "POST":
-        email = form.email
-        firstname = form.firstname
-        lastname = form.lastname
-        password = form.password
-        tcaccepted = form.tcaccepted
-        if tcaccepted == 'on':
-            tcaccepted = True
-        else:
-            tcaccepted = False
-        return jsonify(
-            email=email,
-            firstname=firstname,
-            lastname=lastname,
-            password=password,
-            tcaccepted=tcaccepted
-        )
-    return render_template("login.html")
-"""     message=''
-    if request.method == 'POST':
-        username = request.form.get('username')
-        firstname = request.form.get('firstname')
-        lastname = request.form.get('lastname')
-        email = request.form.get('email')
-        tcagreed = request.form.get('checkbox')
-        response_body = {
-            "username": username,
-            "firstname": firstname,
-            "lastname": lastname,
-            "email": email,
-            "tcagreed" : tcagreed
-        }
-        return response_body """
+    form = RegistrationForm()
+    # Validate Form
+    if form.validate_on_submit():
+        return form.data
+    else:
+        return "denied"
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
