@@ -8,3 +8,8 @@ class RegistrationForm(FlaskForm):
     password = PasswordField('password', [validators.DataRequired()])
     tcaccepted = BooleanField('tcaccepted', [validators.DataRequired()])
     submit = SubmitField('Submit')
+
+class LoginForm(FlaskForm):
+    email = StringField('email', [validators.Email(), validators.Length(min=6, max=30), validators.DataRequired()])
+    password = PasswordField('password', [validators.DataRequired()])
+    submit = SubmitField('Submit')

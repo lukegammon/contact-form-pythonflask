@@ -9,3 +9,5 @@
     - [ ] else return user already exists
  - [ ] csrf token?
  - [ ] dotenv
+
+ // https://youtu.be/Q2QmST-cSwc?t=643

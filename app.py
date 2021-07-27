@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, jsonify
 from flask_sqlalchemy import SQLAlchemy
-from forms import RegistrationForm
+from werkzeug import datastructures
+from forms import RegistrationForm, LoginForm
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
 
@@ -29,16 +30,28 @@ def main():
     form = RegistrationForm()
     return render_template('create.html', title="Create Account", form=form)
 
-@app.route("/check", methods=['POST'])
+@app.route("/login", methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+    return render_template('login.html', title="Login", form=form)
+
+@app.route("/signup", methods=['GET', 'POST'])
 def signup():
     form = RegistrationForm()
-    hashed_value = generate_password_hash(form.password.data)
-    passwordcheck = check_password_hash(hashed_value, form.password.data)
-    print(passwordcheck)
+    hashed_password = generate_password_hash(form.password.data)
     # Validate Form
     if form.validate_on_submit():
+        newuser = Users(
+            email = form.email.data,
+            firstname = form.firstname.data,
+            lastname = form.lastname.data,
+            password = hashed_password,
+            agreedtc = form.tcaccepted.data
+            )
+        db.session.add(newuser)
+        db.session.commit()
         # redirect to loggedin page
-        return form.data
+        return render_template('dashboard.html', title="Dashboard", firstname=newuser.firstname.capitalize())
     else:
         # redirect to signup page or handle errors
         return "denied"
