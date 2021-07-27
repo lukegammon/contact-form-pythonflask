@@ -1,15 +1,18 @@
+from dotenv import load_dotenv
 from flask import Flask, render_template, request, redirect, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug import datastructures
 from forms import RegistrationForm, LoginForm
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
+import os
+load_dotenv()
 
 # App config
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'StronglySecretYa'
+app.config['SECRET_KEY'] = os.getenv("SECRET_KEY")
 # Add Database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("SQLALCHEMY_DATABASE_URI")
 # Initialize Database
 db = SQLAlchemy(app)
 class Users(db.Model):
