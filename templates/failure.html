@@ -4,8 +4,8 @@
 <main>
     <div class="login">
         <div class="top">
-            <h1>Welcome {{ firstname }}</h1>
-            <p>Click <a href="/logout">here to logout</a></p>
+            <h1>{{ error }} failed</h1>
+            <p>Click <a href="{{ redirect_path }}">here to try again</a></p>
         </div>
     </div>
 </main>

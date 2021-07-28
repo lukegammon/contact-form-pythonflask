@@ -7,7 +7,13 @@
     - [ ] check for user in db
     - [ ] user doesnt exist signup / add to db
     - [ ] else return user already exists
+ - [ ] logins
  - [ ] csrf token?
  - [ ] dotenv
+ - [ ] sessions
+ - [ ] redirects not render_template
+
+just finished setting up environment variables
+continue with after user signs up
 
  // https://youtu.be/Q2QmST-cSwc?t=643
