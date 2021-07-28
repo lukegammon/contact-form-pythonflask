@@ -1,19 +1,23 @@
-# todo:
+# Login/Signup form
+Written in Python with:
+ - flask for the backend
+ - wtforms for form validation
+ - sqlite with sqlalchemy for the database
+ - werkzeug for password hashing
+ - dotenv for environment variables
+
+HTML/CSS for the frontend
+
+Checklist:
  - [x] Sort checkbox value acceptance
  - [x] encrypt password
  - [x] setup DB (sqlite)
     - [x] create model
     - [x] initialise database
-    - [ ] check for user in db
-    - [ ] user doesnt exist signup / add to db
-    - [ ] else return user already exists
- - [ ] logins
- - [ ] csrf token?
- - [ ] dotenv
- - [ ] sessions
- - [ ] redirects not render_template
-
-just finished setting up environment variables
-continue with after user signs up
-
- // https://youtu.be/Q2QmST-cSwc?t=643
+    - [x] check for user in db
+    - [x] user doesnt exist signup / add to db
+    - [x] else return user already exists
+ - [x] logins
+ - [x] csrf token?
+ - [x] dotenv
+ - [x] sessions
